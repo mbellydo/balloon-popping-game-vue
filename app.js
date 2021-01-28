@@ -14,8 +14,8 @@ const app = Vue.createApp({
         randomColor() { 
             var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
             console.log(randomColor)
-            this.balloons.style.backgroundColor = randomColor
-            //return randomColor
+            //this.balloons.style.backgroundColor = randomColor
+            return randomColor
         },
         explotarGlobo(el) {
             el.style.cursor = 'pointer'
