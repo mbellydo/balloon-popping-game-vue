@@ -1,42 +1,38 @@
-//https://jsbeginners.com/javascript-balloon-popping-project/
-//Con transición entre el globo y el POP!
-
 const app = Vue.createApp({
     data() {
         return {
-            explotado: 0,
-            balloons: 16,
-            globo: true,
-            pop: false,
+            explotados: 0,
+            balloons: [],
+        }
+    },
+    created(){
+        for (let i = 0; i < 16; i++) {
+            this.balloons.push({
+                explotado: false
+            })            
         }
     },
     methods: {
         randomColor() { 
             var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-            console.log(randomColor)
-            //this.balloons.style.backgroundColor = randomColor
+            
             return randomColor
         },
-        explotarGlobo(el) {
-            el.style.cursor = 'pointer'
-            el.style.backgroundColor = "#ededed"
+        explotarGlobo(balloon) {
+            balloon.explotado = true
 
-            this.globo = false
-            this.pop = true
-            this.explotado++
+            this.explotados++
+        },
+        inflarGlobo(balloon) {
+            balloon.explotado = false
 
-            el.removeEventListener("mouseover", explotarGlobo(el))
+            this.explotados--
         }
     },
     computed: {
-    }
-})
-
-app.directive('pop', {
-    beforeMount(el, binding, vnode) { 
-        document.addEventListener("mousemove", () => {
-            //setTimeout(explotarGlobo(el), binding.value * 1000)
-        }, false)
+        isEndGame(){
+            return this.explotados == 16
+        }
     }
 })
 

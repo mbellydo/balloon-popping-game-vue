@@ -23,6 +23,9 @@ h1{
     color: #000380;
 }
 
+#balloon-gallery span{
+    margin: 0 10px
+}
 #balloon-gallery div{
     background: #ff3300;
     height: 121px;
@@ -38,37 +41,39 @@ h1{
     margin: 2.5px 5 px 2.5px 0px;
 }
 
-#balloon-gallery div:nth-child(3n){
+#balloon-gallery span:nth-child(3n) div{
     background: #ffce00;
     color: #ffce00;
 }
 
-#balloon-gallery div:nth-child(3n-1){
+#balloon-gallery span:nth-child(3n-1) div{
     background:#3f7abe;
     color:#3f7abe;
 }
 
-#balloon-gallery div:nth-child(5n){
+#balloon-gallery span:nth-child(5n) div{
     background:#8e7a8e;
     color:#8e7a8e;
 }
 
-#balloon-gallery div:nth-child(13){
+#balloon-gallery span:nth-child(13) div{
     background:#8e7a8e;
     color:#8e7a8e;
 }
 
-#balloon-gallery div:nth-child(10n){
+#balloon-gallery span:nth-child(10n) div{
     background:#ff3300;
     color: #ff3300;
 }
 
-#balloon-gallery div:nth-child(4n){
+#balloon-gallery span:nth-child(4n) div{
     clear:right;
 }
 
 #yay-no-balloons {
-    display:none;
     color:#ff3300;
     font-size:100px;
+}
+#balloon-gallery span div.pop{
+    background-color: #ff330000;
 }

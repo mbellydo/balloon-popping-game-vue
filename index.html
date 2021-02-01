@@ -5,50 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    <title>Pop the Ballons</title>
+    <title>Pop the Balloons</title>
 </head>
 <body>
     <div id="app" class="wrapper">
         <h1>Pop the balloons by moving</br>your mouse over them</h1>
-        <h2 id="contador">Globos explotados: {{explotado}}</h2>
-        <div id="yay-no-balloons"><span class="blue">Wow!</span> All balloons popped!</div>
-        <div id="balloon-gallery" v-for="balloon in balloons">
-            <transition name="fade">
-                <div v-if="globo" v-pop="1" class="balloon"></div>
-                <div v-else="pop" class="balloon pop">POP!</div>
-            </transition>
-            <!--
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-                <div class="balloon"></div>
-            -->
-        </div>
+        <h2 id="contador">Globos explotados: {{explotados}}</h2>
+        <transition name="fade" mode="out-in">
+            <div id="yay-no-balloons" v-if="isEndGame">
+                <span class="blue">Wow!</span> All balloons popped!
+            </div>
+            <div id="balloon-gallery" v-else>
+                <span v-for="balloon in balloons">
+                    <transition name="fade" mode="out-in">
+                        <div v-if="!balloon.explotado" class="balloon" @mouseover="explotarGlobo(balloon)"></div>
+                        <div v-else class="balloon pop" @mouseover="inflarGlobo(balloon)">POP!</div>
+                    </transition>
+                </span>
+            </div>
+        </transition>
     </div>
 
     <style>
         .fade-enter-active, .fade-leave-active {
-            transition: opacity .5s ease;
+            transition: opacity .1s ease;
         }
         .fade-enter-from, .fade-leave-to {
             opacity: 0;
