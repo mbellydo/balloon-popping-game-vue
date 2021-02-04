@@ -13,11 +13,6 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        /*randomColor() { 
-            var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-            
-            return randomColor
-        },*/
         explotarGlobo(balloon) {
             balloon.explotado = true
 
@@ -27,7 +22,14 @@ const app = Vue.createApp({
             balloon.explotado = false
 
             this.explotados--
-        }
+        },
+        resetGame(){
+            this.balloons.forEach(function(balloon){
+                balloon.explotado = false
+            })
+
+            this.explotados = 0
+        },
     },
     computed: {
         isEndGame(){

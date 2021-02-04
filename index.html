@@ -10,10 +10,11 @@
 <body>
     <div id="app" class="wrapper">
         <h1>Pop the balloons by moving</br>your mouse over them</h1>
-        <h2 id="contador">Globos explotados: {{explotados}}</h2>
+        <h2 id="contador">Popped Balloons: {{explotados}}</h2>
         <transition name="fade" mode="out-in">
             <div id="yay-no-balloons" v-if="isEndGame">
-                <span class="blue">Wow!</span> All balloons popped!
+                <span class="blue">Wow!</span> All balloons popped!<br>
+                <button @click="resetGame">Reset Game</button>
             </div>
             <div id="balloon-gallery" v-else>
                 <span v-for="balloon in balloons">
